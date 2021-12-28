@@ -32,10 +32,11 @@ val_corr=0.98;
 % Пороговое значение, амплитуды ниже которого не учитываются
 threshold=0.05;
 % Замена значений по умолчанию пользовательскими, если они есть
-Npar=length(varargin)/2;
+Npar=length(varargin{1})/2;
 if Npar>0
     for k=1:Npar
-        eval([genvarname(varargin{2*k-1}),'=varargin{2*k}']);
+        z=cell2mat(varargin{1}(2*k));
+        eval([genvarname(char(varargin{1}(2*k-1))),'=',num2str(z)]);
     end
 end
 % Функция Гаусса, представляющая пик
